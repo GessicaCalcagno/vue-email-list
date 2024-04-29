@@ -12,6 +12,8 @@
       <h1>10 email Random:</h1>
       <button @click="generateEmails">Generate</button>
       <ul v-if="emails.length === 10">
+        <!-- POSSO USARE SIA V-SHOW CHE V-IF  -->
+        <!-- <ul v-show="emails.length === 10"> -->
         <li v-for="(email, index) in emails">{{ email }}</li>
       </ul>
     </div>
