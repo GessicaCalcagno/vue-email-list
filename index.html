@@ -11,7 +11,7 @@
     <div id="app">
       <h1>10 email Random:</h1>
       <ul>
-        <li>{{ email }}</li>
+        <li v-for="(email, index) in emails">{{ email }}</li>
       </ul>
     </div>
 

@@ -11,20 +11,22 @@ const { createApp } = Vue;
 createApp({
   data() {
     return {
-      email: "",
+      emails: [],
     };
   },
   created() {
-    this.generateEmail();
+    this.generateEmails(10); // Chiamo il metodo per generare 10 email
   },
   methods: {
-    generateEmail: function () {
-      axios
-        .get("https://flynn.boolean.careers/exercises/api/random/mail")
-        .then((resp) => {
-          console.log(resp);
-          this.email = resp.data.response;
-        });
+    generateEmails(numEmails) {
+      for (let i = 0; i < numEmails; i++) {
+        axios
+          .get("https://flynn.boolean.careers/exercises/api/random/mail")
+          .then((resp) => {
+            console.log(resp);
+            this.emails.push(resp.data.response);
+          });
+      }
     },
   },
 }).mount("#app");
