@@ -7,15 +7,24 @@
 
 //alert("ciao")
 
-const {createApp} = Vue;
+const { createApp } = Vue;
 createApp({
-    data(){
-
+  data() {
+    return {
+      email: "",
+    };
+  },
+  created() {
+    this.generateEmail();
+  },
+  methods: {
+    generateEmail: function () {
+      axios
+        .get("https://flynn.boolean.careers/exercises/api/random/mail")
+        .then((resp) => {
+          console.log(resp);
+          this.email = resp.data.response;
+        });
     },
-    crated(){
-
-    },
-    methods: {
-
-    },
+  },
 }).mount("#app");
