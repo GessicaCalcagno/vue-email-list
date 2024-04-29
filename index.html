@@ -10,7 +10,8 @@
   <body>
     <div id="app">
       <h1>10 email Random:</h1>
-      <ul>
+      <button @click="generateEmails">Generate</button>
+      <ul v-if="emails.length === 10">
         <li v-for="(email, index) in emails">{{ email }}</li>
       </ul>
     </div>

@@ -14,19 +14,22 @@ createApp({
       emails: [],
     };
   },
-  created() {
-    this.generateEmails(10); // Chiamo il metodo per generare 10 email
-  },
+  //   created() {
+  //     this.generateEmails(10); // Chiamo il metodo per generare 10 email se lo voglio generare al caricamento della pagina
+  //   },
   methods: {
-    generateEmails(numEmails) {
-      for (let i = 0; i < numEmails; i++) {
+    //Tolgo il parametro (numEmails) ed inserisco 10
+    generateEmails() {
+      for (let i = 0; i < 10; i++) {
         axios
           .get("https://flynn.boolean.careers/exercises/api/random/mail")
-          .then((resp) => {
-            console.log(resp);
-            this.emails.push(resp.data.response);
+          .then((randomEmail) => {
+            console.log(randomEmail);
+            this.emails.push(randomEmail.data.response);
           });
       }
+      this.emails = [];
+      console.log("__________", this.emails);
     },
   },
 }).mount("#app");
